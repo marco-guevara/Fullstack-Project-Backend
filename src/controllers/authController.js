@@ -33,13 +33,13 @@ function formatUser(user) {
   };
 }
 
-export async function getMe(req, res) {
+async function getMe(req, res) {
   return res.status(200).json({
     user: formatUser(req.user),
   });
 }
 
-export async function register(req, res) {
+async function register(req, res) {
   try {
     const {
       email,
@@ -98,7 +98,7 @@ export async function register(req, res) {
   }
 }
 
-export async function login(req, res) {
+async function login(req, res) {
   try {
     const { email, password } = req.body;
 
@@ -142,3 +142,9 @@ export async function login(req, res) {
     });
   }
 }
+
+export {
+  getMe,
+  login,
+  register,
+};
