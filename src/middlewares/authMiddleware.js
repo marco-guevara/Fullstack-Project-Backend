@@ -3,6 +3,12 @@ import db from "../models/index.js";
 
 export async function protect(req, res, next) {
   try {
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({
+        message: "JWT_SECRET is not configured.",
+      });
+    }
+
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
