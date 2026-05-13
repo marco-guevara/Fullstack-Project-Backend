@@ -21,13 +21,15 @@ const Product = sequelize.define("Product", {
     allowNull: false,
     defaultValue: 0.0,
   },
-  size: {
-    type: DataTypes.STRING,
-    allowNull: true,
+  sizes: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
+    defaultValue: [],
   },
-  color: {
-    type: DataTypes.STRING,
-    allowNull: true,
+  colors: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
+    defaultValue: [],
   },
   stock: {
     type: DataTypes.INTEGER,
