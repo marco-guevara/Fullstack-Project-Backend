@@ -12,7 +12,6 @@ const Cart = sequelize.define("Cart", {
     type: DataTypes.UUID,
     field: "user_id",
     allowNull: false,
-    unique: true,
   },
   status: {
     type: DataTypes.ENUM("active", "completed"),

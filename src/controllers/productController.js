@@ -1,6 +1,6 @@
 import db from "../models/index.js";
 
-export async function getProducts(req, res) {
+async function getProducts(req, res) {
   try {
     const products = await db.Product.findAll({
       order: [["createdAt", "DESC"]],
@@ -17,7 +17,7 @@ export async function getProducts(req, res) {
   }
 }
 
-export async function getProductById(req, res) {
+async function getProductById(req, res) {
   try {
     const { productId } = req.params;
     const product = await db.Product.findByPk(productId);
@@ -38,3 +38,8 @@ export async function getProductById(req, res) {
     });
   }
 }
+
+export {
+  getProductById,
+  getProducts,
+};
