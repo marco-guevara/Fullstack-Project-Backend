@@ -7,6 +7,8 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "db:sync": "node src/dbSync.js",
+    "db:seed": "node src/seeders/seedDatabase.js",
+    "db:unseed": "node src/seeders/unseedDatabase.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
