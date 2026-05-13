@@ -33,6 +33,12 @@ function formatUser(user) {
   };
 }
 
+export async function getMe(req, res) {
+  return res.status(200).json({
+    user: formatUser(req.user),
+  });
+}
+
 export async function register(req, res) {
   try {
     const {

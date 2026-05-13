@@ -1,5 +1,6 @@
 import express from "express";
 import authRoutes from "./routes/authRoutes.js";
+import { notFound } from "./middlewares/notFoundMiddleware.js";
 
 const app = express();
 
@@ -12,5 +13,7 @@ app.get("/health", (req, res) => {
     message: "API is working correctly",
   });
 });
+
+app.use(notFound);
 
 export default app;
