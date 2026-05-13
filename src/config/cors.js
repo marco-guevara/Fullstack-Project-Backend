@@ -12,6 +12,7 @@ function getAllowedOrigins() {
 }
 
 const corsOptions = {
+  credentials: true,
   origin(origin, callback) {
     const allowedOrigins = getAllowedOrigins();
 

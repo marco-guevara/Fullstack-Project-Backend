@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { authCookieName, authCookieOptions } from "../config/cookies.js";
 import db from "../models/index.js";
 
 function createToken(user) {
@@ -31,6 +32,14 @@ function formatUser(user) {
     country: user.country,
     phone: user.phone,
   };
+}
+
+function setAuthCookie(res, token) {
+  res.cookie(authCookieName, token, authCookieOptions);
+}
+
+function clearAuthCookie(res) {
+  res.clearCookie(authCookieName, authCookieOptions);
 }
 
 async function getMe(req, res) {
@@ -84,6 +93,7 @@ async function register(req, res) {
       phone,
     });
     const token = createToken(user);
+    setAuthCookie(res, token);
 
     return res.status(201).json({
       message: "User registered successfully.",
@@ -129,6 +139,7 @@ async function login(req, res) {
     }
 
     const token = createToken(user);
+    setAuthCookie(res, token);
 
     return res.status(200).json({
       message: "User logged in successfully.",
@@ -143,8 +154,17 @@ async function login(req, res) {
   }
 }
 
+async function logout(req, res) {
+  clearAuthCookie(res);
+
+  return res.status(200).json({
+    message: "User logged out successfully.",
+  });
+}
+
 export {
   getMe,
   login,
+  logout,
   register,
 };
