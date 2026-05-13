@@ -2,13 +2,15 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
 const Cart = sequelize.define("Cart", {
-  id: {
+  cartId: {
     type: DataTypes.UUID,
+    field: "cart_id",
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   userId: {
     type: DataTypes.UUID,
+    field: "user_id",
     allowNull: false,
     unique: true,
   },
@@ -19,6 +21,7 @@ const Cart = sequelize.define("Cart", {
   },
 }, {
   tableName: "carts",
+  underscored: true,
 });
 
 export default Cart;

@@ -2,8 +2,9 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
 const Product = sequelize.define("Product", {
-  id: {
+  productId: {
     type: DataTypes.UUID,
+    field: "product_id",
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
@@ -35,6 +36,7 @@ const Product = sequelize.define("Product", {
   },
   imageUrl: {
     type: DataTypes.STRING,
+    field: "image_url",
     allowNull: true,
   },
   category: {
@@ -43,6 +45,7 @@ const Product = sequelize.define("Product", {
   },
 }, {
   tableName: "products",
+  underscored: true,
 });
 
 export default Product;
