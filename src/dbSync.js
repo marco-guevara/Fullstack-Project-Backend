@@ -1,7 +1,4 @@
-import dotenv from "dotenv";
 import db from "./models/index.js";
-
-dotenv.config();
 
 async function syncDatabase() {
   try {
