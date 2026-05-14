@@ -1,5 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
 
+const productionServerUrl = "https://fullstack-project-backend-bhd4.onrender.com";
+
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
@@ -8,6 +10,10 @@ const swaggerDefinition = {
     description: "Backend API for the Baldo academic e-commerce project.",
   },
   servers: [
+    {
+      url: productionServerUrl,
+      description: "Production server",
+    },
     {
       url: "http://localhost:3000",
       description: "Local development server",
