@@ -4,7 +4,7 @@ import Product from "./Product.js";
 import CartItem from "./CartItem.js";
 import sequelize from "../config/database.js";
 
-User.hasOne(Cart, { foreignKey: "userId", as: "cart", onDelete: "CASCADE" });
+User.hasMany(Cart, { foreignKey: "userId", as: "carts", onDelete: "CASCADE" });
 Cart.belongsTo(User, { foreignKey: "userId", as: "user" });
 
 Cart.hasMany(CartItem, { foreignKey: "cartId", as: "items", onDelete: "CASCADE" });
